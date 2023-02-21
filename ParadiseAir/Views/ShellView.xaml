@@ -1,0 +1,82 @@
+﻿<Window x:Class="ParadiseAir.Views.ShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ParadiseAir.Views"
+        mc:Ignorable="d"
+        Title="Paradise Air Inventory App" Height="400" Width="800"
+        FocusManager.FocusedElement="{Binding ElementName=Manufacturer}">
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+
+        <!-- Grid Labels -->
+        <Label Grid.Row="1" Grid.Column="1">Manufacturer:</Label>
+        <Label Grid.Row="2" Grid.Column="1">Model:</Label>
+        <Label Grid.Row="3" Grid.Column="1">Shape:</Label>
+        <Label Grid.Row="4" Grid.Column="1">Caliber:</Label>
+        <Label Grid.Row="5" Grid.Column="1">Actual Size:</Label>
+        <Label Grid.Row="6" Grid.Column="1">Grains:</Label>
+        <Label Grid.Row="7" Grid.Column="1">Pellets Per Tin:</Label>
+        <Label Grid.Row="8" Grid.Column="1">Tin Count:</Label>
+        <Label Grid.Row="9" Grid.Column="1">Open Count:</Label>
+
+        <!-- Data Boxes -->
+        <TextBox x:Name="Manufacturer" Grid.Row="1" Grid.Column="2" MinWidth="200"
+                 Text="{Binding Path=Manufacturer, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=true, NotifyOnValidationError=true}"></TextBox>
+        <TextBox x:Name="Model" Grid.Row="2" Grid.Column="2" MinWidth="200"
+                 Text="{Binding Path=Model, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=true, NotifyOnValidationError=true}"></TextBox>
+        <TextBox x:Name="Shape" Grid.Row="3" Grid.Column="2" MinWidth="200"
+                 Text="{Binding Path=Model, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=true, NotifyOnValidationError=true}"></TextBox>
+        <TextBox x:Name="Caliber" Grid.Row="4" Grid.Column="2" MinWidth="200"
+                 Text="{Binding Path=Caliber, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=true, NotifyOnValidationError=true}"></TextBox>
+        <TextBox x:Name="ActualSize" Grid.Row="5" Grid.Column="2" MinWidth="200"
+                 Text="{Binding Path=ActualSize, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=true, NotifyOnValidationError=true}"></TextBox>
+        <TextBox x:Name="Grains" Grid.Row="6" Grid.Column="2" MinWidth="200"
+                 Text="{Binding Path=Grains, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=true, NotifyOnValidationError=true}"></TextBox>
+        <TextBox x:Name="PelletsPerTin" Grid.Row="7" Grid.Column="2" MinWidth="200"
+                 Text="{Binding Path=PelletsPerTin, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=true, NotifyOnValidationError=true}"></TextBox>
+        <TextBox x:Name="TinCount" Grid.Row="8" Grid.Column="2" MinWidth="200"
+                 Text="{Binding Path=TinCount, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=true, NotifyOnValidationError=true}"></TextBox>
+        <TextBox x:Name="OpenCount" Grid.Row="9" Grid.Column="2" MinWidth="200"
+                 Text="{Binding Path=OpenCount, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=true, NotifyOnValidationError=true}"></TextBox>
+
+        <!-- Button -->
+        <Button x:Name="AddData" Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" MinHeight="50" Margin="5">Add Data</Button>
+
+        <!-- Output Messages -->
+        <Border BorderThickness="1" BorderBrush="Gray" Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="2">
+            <TextBlock x:Name="OutputMsg"></TextBlock>
+        </Border>
+
+        <!-- Tables -->
+        <DataGrid ItemsSource="{Binding Path=PelletData}" KeyboardNavigation.TabNavigation="None" AutoGenerateColumns="True" x:Name="PelletData" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="5" Margin="5"></DataGrid>
+        <DataGrid ItemsSource="{Binding Path=TinData}" KeyboardNavigation.TabNavigation="None" AutoGenerateColumns="True" x:Name="TinData" Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="2" Grid.RowSpan="5" Margin="5"></DataGrid>
+
+    </Grid>
+</Window>
